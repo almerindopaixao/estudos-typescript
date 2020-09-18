@@ -1,0 +1,11 @@
+npx tsc nome do arquivo
+
+npx tsc -w
+
+npx tsc --init
+
+npx ts-node --files --transpile-only
+
+yarn add @typescript-eslint/eslint-plugin @typescript-eslint/parser --dev
+
+npx tsc
