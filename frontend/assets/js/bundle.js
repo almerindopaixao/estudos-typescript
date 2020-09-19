@@ -81,36 +81,57 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/A0018-webpack/index.ts");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/A0035-video/index.ts");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/A0018-webpack/index.ts":
-/*!************************************!*\
-  !*** ./src/A0018-webpack/index.ts ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-__webpack_require__(/*! ./mod */ "./src/A0018-webpack/mod.ts");
-
-
-/***/ }),
-
-/***/ "./src/A0018-webpack/mod.ts":
+/***/ "./src/A0035-video/index.ts":
 /*!**********************************!*\
-  !*** ./src/A0018-webpack/mod.ts ***!
+  !*** ./src/A0035-video/index.ts ***!
   \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-console.log('Sou um módulo');
+Object.defineProperty(exports, "__esModule", { value: true });
+class VideoPlayer {
+    constructor(videoPlayerElements) {
+        this.videoPlayer = videoPlayerElements.videoPlayer;
+        this.playButton = videoPlayerElements.playButton;
+        this.stopButton = videoPlayerElements.stopButton;
+    }
+    startEvents() {
+        this.playButton.addEventListener('click', () => {
+            this.playToggle();
+        });
+        this.stopButton.addEventListener('click', () => {
+            this.videoPlayer.pause();
+            this.videoPlayer.currentTime = 0;
+            this.playButton.innerText = 'Play';
+        });
+    }
+    playToggle() {
+        if (this.videoPlayer.paused) {
+            this.videoPlayer.play();
+            this.playButton.innerText = 'Pause';
+        }
+        else {
+            this.videoPlayer.pause();
+            this.playButton.innerText = 'Play';
+        }
+    }
+    stop() {
+    }
+}
+exports.default = VideoPlayer;
+const videoPlayer = new VideoPlayer({
+    videoPlayer: document.querySelector('.video'),
+    playButton: document.querySelector('.play'),
+    stopButton: document.querySelector('.stop'),
+});
+videoPlayer.startEvents();
 
 
 /***/ })

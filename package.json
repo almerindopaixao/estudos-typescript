@@ -6,7 +6,7 @@
   "author": "Almerindo da Paixão Junior",
   "license": "MIT",
   "scripts": {
-    "build:frontend": "webpack -w",
+    "build:frontend": "webpack",
     "build:backend": "tsc"
   },
   "dependencies": {},
