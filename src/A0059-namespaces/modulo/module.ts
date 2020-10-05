@@ -17,7 +17,3 @@ namespace MeuNamespace {
 const pessoaDoNamespace = new MeuNamespace.PessoaDoNamespace('Almerindo');
 
 console.log(pessoaDoNamespace);
-console.log(MeuNamespace.nomeDoNamespace);
-console.log(MeuNamespace.OutroNamespace.nomeDoNamespace);
-
-export default 1;
