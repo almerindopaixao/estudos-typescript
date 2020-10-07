@@ -25,7 +25,7 @@ export class Order {
     this._orderStatus = 'closed';
 
     this.message.sendMessage(
-      `Seu pedido com total de R$${this.cart.total()} foi recebido com sucesso`,
+      `Seu pedido com total de R$${this.cart.totalWithDicount()} foi recebido com sucesso`,
     );
     this.persistence.saveOrder();
     this.cart.clear();
