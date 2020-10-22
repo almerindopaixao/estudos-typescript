@@ -1,5 +1,5 @@
-import { Discount } from './discounnt';
 import { CartItem } from './interfaces/cart-item';
+import { Discount } from './discount';
 
 export class ShoppingCart {
   private readonly _items: CartItem[] = [];
@@ -19,9 +19,9 @@ export class ShoppingCart {
   }
 
   total(): number {
-    return parseFloat(
-      this._items.reduce((tot, value) => tot + value.price, 0).toFixed(2),
-    );
+    return +this._items
+      .reduce((total, next) => total + next.price, 0)
+      .toFixed(2);
   }
 
   totalWithDicount(): number {
@@ -33,7 +33,7 @@ export class ShoppingCart {
   }
 
   clear(): void {
+    console.log('Carrinho de compras foi limpo...');
     this._items.length = 0;
-    console.log('Carrinho de compras foi limpo');
   }
 }

@@ -22,9 +22,9 @@ export class ShoppingCartLegacy {
   }
 
   total(): number {
-    return parseFloat(
-      this._items.reduce((tot, value) => tot + value.price, 0).toFixed(2),
-    );
+    return +this._items
+      .reduce((total, next) => total + next.price, 0)
+      .toFixed(2);
   }
 
   checkout(): void {
@@ -34,10 +34,7 @@ export class ShoppingCartLegacy {
     }
 
     this._orderStatus = 'closed';
-
-    this.sendMessage(
-      `Seu pedido com total de R$${this.total()} foi recebido com sucesso`,
-    );
+    this.sendMessage(`Seu pedido com total de ${this.total()} foi recebido.`);
     this.saveOrder();
     this.clear();
   }
@@ -47,27 +44,26 @@ export class ShoppingCartLegacy {
   }
 
   sendMessage(msg: string): void {
-    console.log(`Mensagem enviada: ${msg}`);
+    console.log('Mensagem enviada:', msg);
   }
 
   saveOrder(): void {
-    console.log('Pedido salvo com sucesso');
+    console.log('Pedido salvo com sucesso...');
   }
 
   clear(): void {
+    console.log('Carrinho de compras foi limpo...');
     this._items.length = 0;
-    console.log('Carrinho de compras foi limpo');
   }
 }
 
 const shoppingCart = new ShoppingCartLegacy();
-shoppingCart.addItem({ name: 'Camiseta', price: 49.9 });
-shoppingCart.addItem({ name: 'Caderno', price: 9.9 });
+shoppingCart.addItem({ name: 'Camiseta', price: 49.91 });
+shoppingCart.addItem({ name: 'Caderno', price: 9.9123 });
 shoppingCart.addItem({ name: 'Lápis', price: 1.59 });
-// shoppingCart.clear();
 
-console.log(shoppingCart.orderStatus);
 console.log(shoppingCart.items);
 console.log(shoppingCart.total());
+console.log(shoppingCart.orderStatus);
 shoppingCart.checkout();
 console.log(shoppingCart.orderStatus);
