@@ -8,7 +8,9 @@
   "scripts": {
     "build:frontend": "webpack",
     "build:backend": "tsc",
-    "test": "jest"
+    "jest": "npx ts-jest config:init",
+    "test": "jest",
+    "test:silent": "npx jest --watchAll --silent --noStackTrace"
   },
   "dependencies": {
     "lodash": "^4.17.20"
