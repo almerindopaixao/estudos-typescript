@@ -10,6 +10,8 @@
     "build:backend": "tsc",
     "jest": "npx ts-jest config:init",
     "test": "jest",
+    "test:coverage": "npx jest --coverage",
+    "test:clear": "npx jest --clearCache",
     "test:silent": "npx jest --watchAll --silent --noStackTrace"
   },
   "dependencies": {
